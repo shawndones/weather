@@ -1,0 +1,8 @@
+.App {
+  text-align: center;
+  width: 100%;
+}
+.App > * {
+  margin-left: auto;
+  margin-right: auto;
+}
