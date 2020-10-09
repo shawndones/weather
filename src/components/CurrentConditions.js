@@ -47,12 +47,12 @@ export default function CurrentConditions({ data }) {
   const classes = useStyles();
   console.log(data);
 
-  let { temp, temp_min, temp_max } = data.main;
+  // let { temp, temp_min, temp_max } = data.main;
 
   // Convert Temp to f
-  temp = tempConvert(temp);
-  temp_min = tempConvert(temp_min);
-  temp_max = tempConvert(temp_max);
+  // temp = tempConvert(temp);
+  // temp_min = tempConvert(temp_min);
+  // temp_max = tempConvert(temp_max);
 
   return (
     <Box className={classes.root}>
@@ -62,14 +62,14 @@ export default function CurrentConditions({ data }) {
       </h2>
       <div className={classes.conditions}>
         <div>
-          <h3 className={classes.currentTemp}>{temp}&deg;</h3>
+          {/* <h3 className={classes.currentTemp}>{temp}&deg;</h3> */}
           <h3 className="weather-description" style={{ margin: "0" }}>
             Clear
           </h3>
         </div>
         <div style={{ textAlign: "center" }}>
           <WiDaySunny className={classes.icon} size={110} color="#fff" />
-          <MinMaxTemp min={temp_min} max={temp_max} />
+          {/* <MinMaxTemp min={temp_min} max={temp_max} /> */}
         </div>
       </div>
 

@@ -1,3 +1,5 @@
+I got really tired of every weather app taking forever to load because of things that have little to do with weather. So I created my own weather app.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
