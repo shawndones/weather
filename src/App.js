@@ -3,6 +3,8 @@ import "./App.css";
 import CurrentConditions from "./components/CurrentConditions";
 import Loading from "./components/Loading";
 
+import "weather-icons/css/weather-icons.css";
+
 const APIKEY = process.env.REACT_APP_WEATHER_API_KEY;
 const api = "https://api.openweathermap.org/data/2.5/";
 
@@ -42,7 +44,8 @@ function weatherReducer(state, action) {
 
 function App() {
   // initialize city state
-  const [selectedCity, setSelectedCity] = React.useState("Boston");
+  // const [selectedCity, setSelectedCity] = React.useState("40107");
+  const selectedCity = "40107";
   //setup useReducer
   const [state, dispatch] = React.useReducer(weatherReducer, { error: null });
 

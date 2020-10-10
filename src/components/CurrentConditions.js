@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 // import { fetchOneCall } from "../utils/weather-api";
-import { WiDaySunny } from "weather-icons-react";
 import { tempConvert } from "../utils/helpers";
 
 const useStyles = makeStyles({
@@ -35,6 +34,9 @@ const useStyles = makeStyles({
 });
 // console.log(fetchOneCall());
 
+function WeatherIcon() {
+  return;
+}
 function MinMaxTemp({ min, max }) {
   return (
     <h3 style={{ margin: "0" }}>
@@ -48,6 +50,7 @@ export default function CurrentConditions({ data }) {
   console.log(data);
 
   let { temp, temp_min, temp_max } = data.main;
+  let { main } = data.weather[0];
 
   // Convert Temp to f
   temp = tempConvert(temp);
@@ -64,11 +67,14 @@ export default function CurrentConditions({ data }) {
         <div>
           <h3 className={classes.currentTemp}>{temp}&deg;</h3>
           <h3 className="weather-description" style={{ margin: "0" }}>
-            Clear
+            {main}
           </h3>
         </div>
         <div style={{ textAlign: "center" }}>
-          <WiDaySunny className={classes.icon} size={110} color="#fff" />
+          <i
+            className={`wi wi-day-sunny`}
+            style={{ fontSize: "4rem", margin: "29px 0 19px" }}
+          ></i>
           <MinMaxTemp min={temp_min} max={temp_max} />
         </div>
       </div>
