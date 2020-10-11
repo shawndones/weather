@@ -19,7 +19,7 @@ export default function LocationInput({ setSelectedCity }) {
         container
         direction="row"
         justify="center"
-        spacing={2}
+        spacing={1}
         alignItems="center"
       >
         <Grid item xs={6}>

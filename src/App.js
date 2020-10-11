@@ -56,14 +56,17 @@ function App() {
   const [state, dispatch] = React.useReducer(weatherReducer, { error: null });
 
   React.useEffect(() => {
+    // get lat and lng from selectedcity
+
     getWeather(selectedCity)
       .then((data) => dispatch({ type: "success", selectedCity, data }))
       .catch((error) => dispatch({ type: "error", error }));
   }, [selectedCity]);
+
   const isLoading = () => !state[selectedCity] && state.error === null;
   return (
     <div className="App">
-      <h1>Weather App</h1>
+      <h1>Hello Weather</h1>
       <LocationInput setSelectedCity={setSelectedCity} />
       {isLoading() && <Loading text="Gettin weather data" />}
       {state.error && <p className="center-text error">{state.error}</p>}
