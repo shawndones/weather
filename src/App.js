@@ -4,6 +4,7 @@ import CurrentConditions from "./components/CurrentConditions";
 import Loading from "./components/Loading";
 
 import "weather-icons/css/weather-icons.css";
+import LocationInput from "./components/LocationInput";
 
 const APIKEY = process.env.REACT_APP_WEATHER_API_KEY;
 const api = "https://api.openweathermap.org/data/2.5/";
@@ -26,7 +27,12 @@ function getWeather(selectedCity) {
 }
 
 function weatherReducer(state, action) {
-  if (action.type === "success") {
+  if (action.data.cod !== 200) {
+    return {
+      ...state,
+      error: action.data.message,
+    };
+  } else if (action.type === "success") {
     return {
       ...state,
       [action.selectedCity]: action.data,
@@ -35,7 +41,7 @@ function weatherReducer(state, action) {
   } else if (action.type === "error") {
     return {
       ...state,
-      error: action.error.message,
+      error: action.data.message,
     };
   } else {
     throw new Error(`The action type is not supported`);
@@ -44,8 +50,8 @@ function weatherReducer(state, action) {
 
 function App() {
   // initialize city state
-  // const [selectedCity, setSelectedCity] = React.useState("40107");
-  const selectedCity = "40107";
+  const [selectedCity, setSelectedCity] = React.useState("40107");
+  // const selectedCity = "40107";
   //setup useReducer
   const [state, dispatch] = React.useReducer(weatherReducer, { error: null });
 
@@ -58,6 +64,7 @@ function App() {
   return (
     <div className="App">
       <h1>Weather App</h1>
+      <LocationInput setSelectedCity={setSelectedCity} />
       {isLoading() && <Loading text="Gettin weather data" />}
       {state.error && <p className="center-text error">{state.error}</p>}
       {state[selectedCity] && <CurrentConditions data={state[selectedCity]} />}

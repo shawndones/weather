@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 // import { fetchOneCall } from "../utils/weather-api";
-import { tempConvert } from "../utils/helpers";
+import { getWeatherIcon, tempConvert } from "../utils/helpers";
 
 const useStyles = makeStyles({
   root: {
@@ -34,9 +34,6 @@ const useStyles = makeStyles({
 });
 // console.log(fetchOneCall());
 
-function WeatherIcon() {
-  return;
-}
 function MinMaxTemp({ min, max }) {
   return (
     <h3 style={{ margin: "0" }}>
@@ -50,12 +47,14 @@ export default function CurrentConditions({ data }) {
   console.log(data);
 
   let { temp, temp_min, temp_max } = data.main;
-  let { main } = data.weather[0];
+  let { main, id } = data.weather[0];
 
   // Convert Temp to f
   temp = tempConvert(temp);
   temp_min = tempConvert(temp_min);
   temp_max = tempConvert(temp_max);
+
+  id = getWeatherIcon(id);
 
   return (
     <Box className={classes.root}>
@@ -72,7 +71,7 @@ export default function CurrentConditions({ data }) {
         </div>
         <div style={{ textAlign: "center" }}>
           <i
-            className={`wi wi-day-sunny`}
+            className={`wi ${id}`}
             style={{ fontSize: "4rem", margin: "29px 0 19px" }}
           ></i>
           <MinMaxTemp min={temp_min} max={temp_max} />
