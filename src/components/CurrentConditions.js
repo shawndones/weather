@@ -59,8 +59,8 @@ export default function CurrentConditions({ data }) {
   return (
     <Box className={classes.root}>
       <h2 style={{ margin: "0" }}>
-        {data.name}, KY Weather
-        <small className={classes.time}>as of 7:30pm EDT</small>
+        {data.name} Weather
+        {/* <small className={classes.time}>as of 7:30pm EDT</small> */}
       </h2>
       <div className={classes.conditions}>
         <div>
@@ -78,7 +78,7 @@ export default function CurrentConditions({ data }) {
         </div>
       </div>
 
-      <p>15% Chance of rain through 8pm</p>
+      {/* <p>15% Chance of rain through 8pm</p> */}
     </Box>
   );
 }

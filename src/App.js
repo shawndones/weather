@@ -58,6 +58,22 @@ function App() {
   React.useEffect(() => {
     // get lat and lng from selectedcity
 
+    // if selectedCity=undefined then use geolocation.
+
+    if ("geolocation" in navigator) {
+      // console.log("position available");
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log("Lat is: ", position.coords.latitude);
+        console.log("Lng is: ", position.coords.longitude);
+      });
+      console.log();
+    } else {
+      // if !geolocation then show a message
+      console.log(
+        "Auto location not available. Please enter a zip code or city."
+      );
+    }
+
     getWeather(selectedCity)
       .then((data) => dispatch({ type: "success", selectedCity, data }))
       .catch((error) => dispatch({ type: "error", error }));
