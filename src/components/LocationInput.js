@@ -12,9 +12,9 @@ export default function LocationInput({ setSelectedCity }) {
   return (
     <div
       className="location-input-form"
-      style={{ margin: "16px auto", width: "50%" }}
+      style={{ margin: "16px auto 32px", width: "50%" }}
     >
-      <p>Enter a city or zip code</p>
+      {/* <p>Enter a city or zip code</p> */}
       <Grid
         container
         direction="row"
@@ -25,9 +25,9 @@ export default function LocationInput({ setSelectedCity }) {
         <Grid item xs={6}>
           <TextField
             id="locality"
-            helperText="Enter a City or Zip"
+            // helperText="Enter a City or Zip"
             autoComplete="off"
-            label="City or Zip"
+            label="Enter a City or Zip"
             value={localityValue}
             onChange={handleChange}
             inputRef={localityRef}

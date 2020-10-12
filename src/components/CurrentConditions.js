@@ -37,7 +37,7 @@ const useStyles = makeStyles({
 function MinMaxTemp({ min, max }) {
   return (
     <h3 style={{ margin: "0" }}>
-      <span>{min}&deg;</span>/<span>{max}&deg;</span>
+      <span>Low {min}&deg;</span> / <span>High {max}&deg;</span>
     </h3>
   );
 }
@@ -59,7 +59,7 @@ export default function CurrentConditions({ data }) {
   return (
     <Box className={classes.root}>
       <h2 style={{ margin: "0" }}>
-        {data.name} Weather
+        Current Conditions in {data.name}
         {/* <small className={classes.time}>as of 7:30pm EDT</small> */}
       </h2>
       <div className={classes.conditions}>
