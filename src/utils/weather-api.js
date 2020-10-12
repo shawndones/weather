@@ -3,11 +3,12 @@ const api = "https://api.openweathermap.org/data/2.5/";
 
 // console.log(APIKEY);
 
-export function fetchOneCall(lat, lon, part) {
+export function fetchOneCall(lat, lng) {
   return fetch(
-    `${api}/onecall?lat=${lat}&lon=${lon}&appid=${APIKEY}`
+    `${api}/onecall?lat=${lat}&lon=${lng}&appid=${APIKEY}`
   ).then((res) => res.json());
 }
+
 export function getWeather(selectedCity) {
   // if zip code convert to lat long
   // if city and state, convert to lat long
