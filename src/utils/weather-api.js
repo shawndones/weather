@@ -8,7 +8,22 @@ export function fetchOneCall(lat, lon, part) {
     `${api}/onecall?lat=${lat}&lon=${lon}&appid=${APIKEY}`
   ).then((res) => res.json());
 }
+export function getWeather(selectedCity) {
+  // if zip code convert to lat long
+  // if city and state, convert to lat long
 
+  // `${api}/onecall?lat=${lat}&lon=${lon}&appid=${APIKEY}`
+
+  return fetch(`${api}/weather?q=${selectedCity},us&appid=${APIKEY}`)
+    .then((res) => res.json())
+    .then((data) => {
+      // if (!data.items) {
+      //   throw new Error(data.message);
+      // }
+
+      return data;
+    });
+}
 // export function currentWeather(lat, lon, part) {
 //   // const data =
 // }

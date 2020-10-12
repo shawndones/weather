@@ -8,9 +8,13 @@ export default function LocationInput({ setSelectedCity }) {
   const handleChange = (event) => {
     setLocalityValue(event.target.value);
   };
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSelectedCity(localityRef.current.value);
+  };
   return (
-    <div
+    <form
+      onSubmit={handleSubmit}
       className="location-input-form"
       style={{ margin: "16px auto 32px", width: "50%" }}
     >
@@ -38,12 +42,12 @@ export default function LocationInput({ setSelectedCity }) {
             className="btn btn-dark"
             disabled={!localityValue}
             variant="contained"
-            onClick={() => setSelectedCity(localityRef.current.value)}
+            type="submit"
           >
             Submit
           </Button>
         </Grid>
       </Grid>
-    </div>
+    </form>
   );
 }
