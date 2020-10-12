@@ -42,25 +42,24 @@ function MinMaxTemp({ min, max }) {
   );
 }
 
-export default function CurrentConditions({ city, data }) {
+export default function CurrentConditions({ data }) {
   const classes = useStyles();
   console.log(data);
 
-  let { temp } = data.current;
-  let { max, min } = data.daily[0].temp;
-  let { main, id } = data.current.weather[0];
-  console.log("Hello");
+  let { temp, temp_min, temp_max } = data.main;
+  let { main, id } = data.weather[0];
+
   // Convert Temp to f
   temp = tempConvert(temp);
-  let temp_max = tempConvert(max);
-  let temp_min = tempConvert(min);
+  temp_min = tempConvert(temp_min);
+  temp_max = tempConvert(temp_max);
 
   id = getWeatherIcon(id);
 
   return (
     <Box className={classes.root}>
       <h2 style={{ margin: "0" }}>
-        Current Conditions in {city}
+        Current Conditions in {data.name}
         {/* <small className={classes.time}>as of 7:30pm EDT</small> */}
       </h2>
       <div className={classes.conditions}>
