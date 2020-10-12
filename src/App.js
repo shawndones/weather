@@ -5,26 +5,10 @@ import Loading from "./components/Loading";
 
 import "weather-icons/css/weather-icons.css";
 import LocationInput from "./components/LocationInput";
+import { getWeather } from "./utils/weather-api";
 
 const APIKEY = process.env.REACT_APP_WEATHER_API_KEY;
 const api = "https://api.openweathermap.org/data/2.5/";
-
-function getWeather(selectedCity) {
-  // if zip code convert to lat long
-  // if city and state, convert to lat long
-
-  // `${api}/onecall?lat=${lat}&lon=${lon}&appid=${APIKEY}`
-
-  return fetch(`${api}/weather?q=${selectedCity},us&appid=${APIKEY}`)
-    .then((res) => res.json())
-    .then((data) => {
-      // if (!data.items) {
-      //   throw new Error(data.message);
-      // }
-
-      return data;
-    });
-}
 
 function weatherReducer(state, action) {
   if (action.data.cod !== 200) {
@@ -80,6 +64,7 @@ function App() {
   }, [selectedCity]);
 
   const isLoading = () => !state[selectedCity] && state.error === null;
+
   return (
     <div className="App">
       <h1>Hello Weather</h1>
